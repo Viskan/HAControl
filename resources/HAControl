@@ -1,0 +1,33 @@
+### BEGIN INIT INFO
+# Provides:          HAControl
+# Required-Start:    $local_fs
+# Required-Stop:     $local_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: HAControl
+### END INIT INFO
+
+#HAControl auto-start
+#description: Auto-starts HAControl
+#processname: HAControl
+#pidfile: /var/run/HAControl.pid
+ 
+export JAVA_HOME=/usr/lib/jvm/java-7-oracle/
+case $1 in
+ 
+start)
+  sh /usr/share/HAControl/service.sh start
+  ;;
+ 
+stop)  
+  sh /usr/share/HAControl/service.sh stop
+  ;;
+ 
+restart)
+  sh /usr/share/HAControl/service.sh stop
+  sh /usr/share/HAControl/service.sh start
+  ;;
+esac
+
+    
+exit 0
